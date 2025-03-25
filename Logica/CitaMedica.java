@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CitaMedica {
-
+    private String fecha;
     String diagnostico;
 
     ArrayList<CitaMedica> listaCitas = new ArrayList<>();
@@ -16,8 +16,8 @@ public class CitaMedica {
     public CitaMedica() {    
     }
 
-    public CitaMedica(String diagnostico) {
-        this.diagnostico = diagnostico;
+    public CitaMedica(String fecha) {
+        this.fecha = fecha;
     }
 
     public String getDiagnostico() {
@@ -26,6 +26,10 @@ public class CitaMedica {
 
     public void setDiagnostico(String diagnostico) {
         this.diagnostico = diagnostico;
+    }
+
+    public String getFecha() {
+        return fecha;
     }
 
     public void registrarDiagnostico() {
@@ -68,7 +72,7 @@ public class CitaMedica {
         System.out.println("-------------------------\n");
         
         int totalDiagnosticos = listaCitas.size(); // Obtener el total de diagnósticos
-        if (totalDiagnosticos == 0) {
+        if (listaCitas.size() == 0) {
             System.out.println("No hay diagnósticos registrados.\n");
         } else {
             int contador = 1; // Contador para numerar los diagnósticos

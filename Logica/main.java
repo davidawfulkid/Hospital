@@ -7,8 +7,24 @@ public class main {
     //    doctor.agregarDoctor();
     //    doctor.mostrarDoctores();
 
-        CitaMedica c = new CitaMedica(null);
-        c.registrarDiagnostico();
-        c.mostrarDiagnostico();
+        // CitaMedica c = new CitaMedica(null);
+        // c.registrarDiagnostico();
+        // c.mostrarDiagnostico();
+
+
+        Hospital nuevoDoctor = new Hospital();
+        nuevoDoctor.registrarDoctores();
+
+        Hospital nuevoPaciente = new Hospital();
+        nuevoPaciente.registrarPaciente();
+
+        Paciente paciente2 = new Paciente();
+        paciente2.agendarCita();
+        paciente2.mostrarCitas();
+
+        CitaMedica cita1 = new CitaMedica();
+        cita1.registrarDiagnostico();
+        cita1.mostrarDiagnostico();
+
     }
 }

@@ -11,8 +11,6 @@ public class Doctor {
     Scanner scanner = new Scanner(System.in);
     int unoDos = 0;
 
-    public Doctor(){
-    }
 
     public Doctor(String nombre, String especialidad){
         this.nombre = nombre;

@@ -5,38 +5,62 @@ import java.util.Scanner;
 
 public class Hospital {
     //SANTIAGO TRUJILLO
-    private ArrayList<Hospital> listaDoctores;
-    private ArrayList<Hospital> listaPacientes;
+    private ArrayList<Doctor> listaDoctores = new ArrayList<>();
+    private ArrayList<Paciente> listaPacientes  = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
+
     
-    public Hospital(ArrayList<Hospital> listaDoctores, ArrayList<Hospital> listaPacientes) {
-        this.listaDoctores = new ArrayList<>();
-        this.listaPacientes = new ArrayList<>();
+    public Hospital() {
     }
 
-    public ArrayList<Hospital> getListaDoctores() {
+    public Hospital(ArrayList<Doctor> listaDoctores, ArrayList<Paciente> listaPacientes) {
+        this.listaDoctores = listaDoctores;
+        this.listaPacientes = listaPacientes;
+    }
+
+    public ArrayList<Doctor> getListaDoctores() {
         return listaDoctores;
     }
 
-    public void setListaDoctores(ArrayList<Hospital> listaDoctores) {
+
+
+    public void setListaDoctores(ArrayList<Doctor> listaDoctores) {
         this.listaDoctores = listaDoctores;
     }
 
-    public ArrayList<Hospital> getListaPacientes() {
+
+
+    public ArrayList<Paciente> getListaPacientes() {
         return listaPacientes;
     }
 
-    public void setListaPacientes(ArrayList<Hospital> listaPacientes) {
+
+
+    public void setListaPacientes(ArrayList<Paciente> listaPacientes) {
         this.listaPacientes = listaPacientes;
     }
+
+
+
+    public Scanner getScanner() {
+        return scanner;
+    }
+
+
+
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+
 
     public void registrarDoctores() {
         boolean condicion = true;
         while (condicion) {
             System.out.println("Ingrese 1 para agregar los datos del doctor");
-            System.out.println("Ingrese 0");
+            System.out.println("Ingrese 0, para salir");
             int numIngresado = scanner.nextInt();
-            scanner.nextInt();
+            scanner.nextLine();
             switch (numIngresado) {
                 case 1:
                     System.out.println("\ningrese el nombre del doctor: ");
@@ -45,7 +69,7 @@ public class Hospital {
                     System.out.println("\ningrese la especialidad del doctor: ");
                     String especialidad= scanner.nextLine();
 
-                    Doctor nuevoDoctor = new Doctor();
+                    Doctor nuevoDoctor = new Doctor(nombre, especialidad);
                     listaDoctores.add(nuevoDoctor);
                     System.out.println("\nDOCTOR AGREGADO CORRECTAMENTE");
                 break;
@@ -64,21 +88,21 @@ public class Hospital {
         boolean condicion = true;
         while (condicion) {
             System.out.println("Ingrese 1 para agregar los datos del paciente");
-            System.out.println("Ingrese 0");
+            System.out.println("Ingrese 0, para salir");
             int numIngresado = scanner.nextInt();
-            scanner.nextInt();
+            scanner.nextLine();
             switch (numIngresado) {
                 case 1:
                     System.out.println("\ningrese el nombre del paciente: ");
-                    String nombrePaciente = scanner.nextLine();
+                    String nombre = scanner.nextLine();
 
                     System.out.println("\ningrese la edad del paciente: ");
-                    String edadPaciente = scanner.nextLine();
+                    int edad = scanner.nextInt();
 
                     System.out.println("\ningrese la cedula del paciente: ");
-                    String cedulaPaciente = scanner.nextLine();
+                    int numIdentidad = scanner.nextInt();
 
-                    Paciente nuevoPaciente = new Paciente();
+                    Paciente nuevoPaciente = new Paciente(nombre, edad, numIdentidad, new ArrayList<>());
                     listaPacientes.add(nuevoPaciente);
                     System.out.println("\nPACIENTE AGREGADO CORRECTAMENTE");
                 break;
