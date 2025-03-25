@@ -53,6 +53,15 @@ public class Hospital {
     }
 
 
+    public Paciente buscarPacientePorCedula(int cedula) {
+        for (Paciente p : listaPacientes) {
+            if (p.getNumIdentidad() == cedula) {
+                return p;
+            }
+        }
+        return null;
+    }
+
 
     public void registrarDoctores() {
         boolean condicion = true;
