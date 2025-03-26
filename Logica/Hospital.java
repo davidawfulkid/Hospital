@@ -52,17 +52,6 @@ public class Hospital {
         this.scanner = scanner;
     }
 
-
-    public Paciente buscarPacientePorCedula(int cedula) {
-        for (Paciente p : listaPacientes) {
-            if (p.getNumIdentidad() == cedula) {
-                return p;
-            }
-        }
-        return null;
-    }
-
-
     public void registrarDoctores() {
         boolean condicion = true;
         while (condicion) {
@@ -82,18 +71,29 @@ public class Hospital {
                     listaDoctores.add(nuevoDoctor);
                     System.out.println("\nDOCTOR AGREGADO CORRECTAMENTE");
                 break;
-            case 0:
-                System.out.println("\nsaliendo...");
-                condicion = false;
+
+                case 0:
+                    System.out.println("\nsaliendo...");
+                    condicion = false;
                 break;
-            default:
-                System.out.println("\nOpcion invalida");
-        }
+
+                default:
+                    System.out.println("\nOpcion invalida");
+            
+            }
         }
         
     }
 
-    public void registrarPaciente() {
+    public void mostrarDoctores() {
+        System.out.println("lista de doctores:");
+        for (Doctor d : listaDoctores) {
+            System.out.println("\nnombre: " + d.getNombre() + "\nespecialidad: " + d.getEspecialidad());
+            System.out.println("______________________________");
+        }
+    }
+
+    public void registrarPacientes() {
         boolean condicion = true;
         while (condicion) {
             System.out.println("Ingrese 1 para agregar los datos del paciente");
@@ -107,11 +107,13 @@ public class Hospital {
 
                     System.out.println("\ningrese la edad del paciente: ");
                     int edad = scanner.nextInt();
+                    scanner.nextLine();
 
                     System.out.println("\ningrese la cedula del paciente: ");
                     int numIdentidad = scanner.nextInt();
+                    scanner.nextLine();
 
-                    Paciente nuevoPaciente = new Paciente(nombre, edad, numIdentidad, new ArrayList<>());
+                    Paciente nuevoPaciente = new Paciente(nombre, edad, numIdentidad);
                     listaPacientes.add(nuevoPaciente);
                     System.out.println("\nPACIENTE AGREGADO CORRECTAMENTE");
                 break;
@@ -123,6 +125,36 @@ public class Hospital {
                 System.out.println("\nOpcion invalida");
             }
         }
+    }
+
+    public void mostrarPacientes() {
+        System.out.println("lista de pacientes:");
+        for (Paciente p : listaPacientes) {
+            System.out.println("\nnombre: " + p.getNombre() + "\nedad: " + p.getEdad() + "\nnumero de identidad: " + p.getNumIdentidad());
+            System.out.println("______________________________");
+        }
+    }
+
+    public void mostrarCitas() {
+        System.out.println("Ingrese la cédula del paciente para ver sus citas:");
+        int ceduIngresada = scanner.nextInt();
+        scanner.nextLine();
+        for (Paciente p : listaPacientes) {
+            if (ceduIngresada == p.getNumIdentidad()) {
+                ArrayList<CitaMedica> listaCitas = p.getListaCitas();
+                if (listaCitas.isEmpty()) {
+                    System.out.println("El paciente con cédula: " + ceduIngresada + " no tiene citas agendadas.");
+                } else {
+                    System.out.println("Citas del paciente " + p.getNombre() + ":");
+                    for (CitaMedica c : listaCitas) {
+                        System.out.println("Fecha de la cita: " + c.getFechaCita());
+                    }
+                }
+                return;
+            }
+        }
+
+        System.out.println("No se encontró ningún paciente con la cédula " + ceduIngresada + ".");
     }
 
 }

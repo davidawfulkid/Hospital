@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CitaMedica {
-    private String fecha;
-    String diagnostico;
+    private String diagnostico;
+    private String fechaCita;
 
     ArrayList<CitaMedica> listaCitas = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
@@ -16,8 +16,8 @@ public class CitaMedica {
     public CitaMedica() {    
     }
 
-    public CitaMedica(String fecha) {
-        this.fecha = fecha;
+    public CitaMedica(String fechaCita) {
+        this.fechaCita = fechaCita;
     }
 
     public String getDiagnostico() {
@@ -28,9 +28,14 @@ public class CitaMedica {
         this.diagnostico = diagnostico;
     }
 
-    public String getFecha() {
-        return fecha;
+    public String getFechaCita() {
+        return fechaCita;
     }
+
+    public void setFechaCita(String fechaCita) {
+        this.fechaCita = fechaCita;
+    }
+
 
     public void registrarDiagnostico() {
         boolean condicion = true;
