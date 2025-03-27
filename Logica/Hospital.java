@@ -7,6 +7,7 @@ public class Hospital {
     //SANTIAGO TRUJILLO
     private ArrayList<Doctor> listaDoctores = new ArrayList<>();
     private ArrayList<Paciente> listaPacientes  = new ArrayList<>();
+    private ArrayList<CitaMedica> listaCitas = new ArrayList<>();
     private Scanner scanner = new Scanner(System.in);
 
     
@@ -40,7 +41,14 @@ public class Hospital {
         this.listaPacientes = listaPacientes;
     }
 
+    public ArrayList<CitaMedica> getListaCitas() {
+        return listaCitas;
+    }
 
+
+    public void setListaCitas(ArrayList<CitaMedica> listaCitas) {
+        this.listaCitas = listaCitas;
+    }
 
     public Scanner getScanner() {
         return scanner;
@@ -134,6 +142,52 @@ public class Hospital {
             System.out.println("______________________________");
         }
     }
+
+    public void agendarCita() {
+        boolean condicion = true;
+            while (condicion) {
+                System.out.println("Ingrese 1 para empezar a agendar la cita");
+                System.out.println("Ingrese 0 para salir");
+                int numIngresado = scanner.nextInt();
+                scanner.nextLine();
+                switch (numIngresado) {
+                    case 1:
+                    System.out.println("\nIngrese la cédula del paciente para agendar la cita:");
+                    int ceduIngresada = scanner.nextInt();
+                    scanner.nextLine();
+    
+                    // Buscar al paciente por su cédula
+                    Paciente pacienteEncontrado = null;
+                    for (Paciente p : listaPacientes) {
+                        if (p.getNumIdentidad() == ceduIngresada) {
+                            pacienteEncontrado = p;
+                            break;
+                        }
+                    }
+    
+                    if (pacienteEncontrado == null) {
+                        System.out.println("No se encontró ningún paciente con la cédula " + ceduIngresada + ".");
+                    } else {
+                        System.out.println("\nIngrese la fecha de la cita (formato día/mes/año): ");
+                        String fechaCita = scanner.nextLine();
+    
+                        // Crear la nueva cita y asociarla al paciente
+                        CitaMedica nuevaCita = new CitaMedica(fechaCita);
+                        pacienteEncontrado.getListaCitas().add(nuevaCita);
+                        System.out.println("\nCita agendada correctamente para el paciente " + pacienteEncontrado.getNombre() + ".");
+                    }
+                    break;
+                case 0:
+                    System.out.println("\nsaliendo...");
+                    condicion = false;
+                    break;
+                default:
+                    System.out.println("\nOpcion invalida");
+                }
+            
+            }
+    }
+        
 
     public void mostrarCitas() {
         System.out.println("Ingrese la cédula del paciente para ver sus citas:");

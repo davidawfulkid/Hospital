@@ -16,8 +16,8 @@ public class CitaMedica {
     public CitaMedica() {    
     }
 
-    public CitaMedica(String fechaCita) {
-        this.fechaCita = fechaCita;
+    public CitaMedica(String diagnostico) {
+        this.diagnostico = diagnostico;
     }
 
     public String getDiagnostico() {

@@ -64,31 +64,31 @@ public class Paciente {
     }
 
 
-    public void agendarCita() {
-        boolean condicion = true;
-        while (condicion) {
-            System.out.println("Ingrese 1 para empezar a agendar la cita");
-            System.out.println("Ingrese 0 para salir");
-            int numIngresado = scanner.nextInt();
-            scanner.nextLine();
-            switch (numIngresado) {
-                case 1:
-                    System.out.println("\nIngrese la fecha de la cita (formato día/mes/año): ");
-                    String fechaCita = scanner.nextLine();
-                    CitaMedica nuevaCita = new CitaMedica(fechaCita);
-                    listaCitas.add(nuevaCita);
-                    System.out.println("\nCita agendada correctamente.");
-                break;
-            case 0:
-                System.out.println("\nsaliendo...");
-                condicion = false;
-                break;
-            default:
-                System.out.println("\nOpcion invalida");
-            }
+    // public void agendarCita() {
+    //     boolean condicion = true;
+    //     while (condicion) {
+    //         System.out.println("Ingrese 1 para empezar a agendar la cita");
+    //         System.out.println("Ingrese 0 para salir");
+    //         int numIngresado = scanner.nextInt();
+    //         scanner.nextLine();
+    //         switch (numIngresado) {
+    //             case 1:
+    //                 System.out.println("\nIngrese la fecha de la cita (formato día/mes/año): ");
+    //                 String fechaCita = scanner.nextLine();
+    //                 CitaMedica nuevaCita = new CitaMedica(fechaCita);
+    //                 listaCitas.add(nuevaCita);
+    //                 System.out.println("\nCita agendada correctamente.");
+    //             break;
+    //         case 0:
+    //             System.out.println("\nsaliendo...");
+    //             condicion = false;
+    //             break;
+    //         default:
+    //             System.out.println("\nOpcion invalida");
+    //         }
         
-        }
-    }
+    //     }
+    // }
 
     
 }

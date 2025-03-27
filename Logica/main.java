@@ -9,11 +9,11 @@ public class main {
         hospital.mostrarPacientes();
         
         // Paciente paciente = new Paciente();
-        // paciente.agendarCita();
+        // hospital.agendarCita();
         // hospital.mostrarCitas();
 
-        // CitaMedica cita = new CitaMedica();
-        // cita.registrarDiagnostico();
-        // cita.mostrarDiagnostico();
+        CitaMedica cita = new CitaMedica();
+        cita.registrarDiagnostico();
+        cita.mostrarDiagnostico();
     }
 }
